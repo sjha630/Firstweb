@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Saraswati Education Point | Coaching for Class 6-12 All Streams</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcf5;
+      color: #1e1e2f;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Color palette: deep saffron & royal blue */
+    :root {
+      --primary: #e67e22;   /* warm orange/saffron */
+      --primary-dark: #b45f1b;
+      --secondary: #1e3a8a; /* deep royal blue */
+      --secondary-light: #2c4d9e;
+      --accent: #facc15;
+      --gray-bg: #f9f7f0;
+      --card-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(2px);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      font-size: 0.85rem;
+      display: block;
+      color: #5b5b6e;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      transition: var(--transition);
+      color: #2c3e50;
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2.5px;
+      background: var(--primary);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--secondary);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-block;
+      box-shadow: 0 4px 8px rgba(230, 126, 34, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #fff6e8 0%, #ffe6d5 100%);
+      padding: 4rem 0 5rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: var(--secondary);
+      color: white;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+
+    .hero-highlight {
+      color: var(--primary);
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #334155;
+      margin: 1.5rem 0;
+      max-width: 550px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    .hero-image {
+      flex: 0.8;
+      background: rgba(230,126,34,0.1);
+      border-radius: 40px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .hero-image i {
+      font-size: 12rem;
+      color: var(--primary);
+      opacity: 0.8;
+    }
+
+    /* Section common */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #4b5563;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+    }
+
+    /* Courses Cards */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+    }
+
+    .card-header {
+      background: linear-gradient(120deg, var(--secondary), var(--secondary-light));
+      padding: 1.6rem;
+      color: white;
+    }
+
+    .card-header i {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-header h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .card-header p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .card-body {
+      padding: 1.6rem;
+    }
+
+    .subjects-list {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .subjects-list li {
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .subjects-list i {
+      color: var(--primary);
+      font-size: 0.8rem;
+      width: 20px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.8rem;
+    }
+
+    /* Why choose us */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-item {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: 0.2s;
+    }
+
+    .feature-item i {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Contact Section */
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .contact-info {
+      flex: 1;
+      background: var(--secondary);
+      color: white;
+      padding: 2.5rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-details {
+      margin: 2rem 0;
+    }
+
+    .contact-details p {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-details i {
+      width: 28px;
+      font-size: 1.2rem;
+    }
+
+    .social-icons a {
+      color: white;
+      background: rgba(255,255,255,0.2);
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-right: 12px;
+      transition: 0.2s;
+    }
+
+    .contact-form {
+      flex: 1;
+      padding: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+      font-family: inherit;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(230,126,34,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .menu-icon {
+        display: block;
+      }
+      .nav-links {
+        position: fixed;
+        top: 75px;
+        left: -100%;
+        flex-direction: column;
+        background: white;
+        width: 70%;
+        height: 100vh;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        align-items: flex-start;
+        z-index: 999;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+      }
+      .hero-image i {
+        font-size: 8rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 20px;
+      }
+      .contact-wrapper {
+        flex-direction: column;
+      }
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 99;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background: #128C7E;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/919876543210?text=Hello%2C%20I%20want%20to%20know%20more%20about%20courses" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<header>
+  <div class="container navbar">
+    <div class="logo">
+      <h1>📚 Saraswati <span style="color:var(--primary);">Education Point</span></h1>
+      <span>Trusted coaching since 2012</span>
+    </div>
+    <div class="menu-icon" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="btn-outline" style="padding: 0.4rem 1.2rem;">Enquire Now</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-chalkboard-user"></i> Excellence in Education</div>
+        <h1>Best Coaching for <span class="hero-highlight">Class 6–10</span> & <span class="hero-highlight">11–12 All Streams</span></h1>
+        <p>📖 Science • Commerce • Arts | Foundation to Board Excellence | Personalized Attention & Proven Results</p>
+        <div>
+          <a href="#courses" class="btn-primary">Explore Programs <i class="fas fa-arrow-right"></i></a>
+          <a href="#contact" class="btn-outline" style="margin-left: 1rem;">Free Counselling</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><h3>2500+</h3><p>Students Trained</p></div>
+          <div class="stat"><h3>98%</h3><p>Parent Satisfaction</p></div>
+          <div class="stat"><h3>15+</h3><p>Expert Faculty</p></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-graduation-cap"></i>
+        <p style="margin-top: 1rem; font-weight: 500;">🎯 IIT/NEET Foundation | Boards | Competitive Edge</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section: Class 6-10 & 11-12 All Streams -->
+  <section id="courses">
+    <div class="container">
+      <h2 class="section-title">📚 Our Academic Programs</h2>
+      <p class="section-subtitle">Structured curriculum for school excellence & competitive foundation — Class 6 to 12, all streams covered</p>
+      <div class="courses-grid">
+        <!-- Class 6-10 Card -->
+        <div class="course-card">
+          <div class="card-header">
+            <i class="fas fa-users"></i>
+            <h3>Classes 6–10</h3>
+            <p>Foundation & Board Excellence</p>
+          </div>
+          <div class="card-body">
+            <ul class="subjects-list">
+              <li><i class="fas fa-check-circle"></i> Mathematics & Science (PCB/PCM basic)</li>
+              <li><i class="fas fa-check-circle"></i> Social Science (History, Geo, Civics)</li>
+              <li><i class="fas fa-check-circle"></i> English, Hindi/Sanskrit & Grammar</li>
+              <li><i class="fas fa-check-circle"></i> Olympiad / NTSE / Quiz prep</li>
+            </ul>
+            <div class="tag"><i class="far fa-clock"></i> Weekly tests + Doubt sessions</div>
+          </div>
+        </div>
+
+        <!-- Class 11-12 Science -->
+        <div class="course-card">
+          <div class="card-header" style="background: linear-gradient(120deg, #e67e22, #f39c12);">
+            <i class="fas fa-flask"></i>
+            <h3>11–12 Science</h3>
+            <p>PCM | PCB | Computer Science</p>
+          </div>
+          <div class="card-body">
+            <ul class="subjects-list">
+              <li><i class="fas fa-atom"></i> Physics, Chemistry, Maths/Biology</li>
+              <li><i class="fas fa-dna"></i> Practicals & Lab support</li>
+              <li><i class="fas fa-chart-line"></i> JEE/NEET foundation + Board prep</li>
+              <li><i class="fas fa-laptop-code"></i> CS / IP optional</li>
+            </ul>
+            <div class="tag">✅ Integrated coaching for competitive exams</div>
+          </div>
+        </div>
+
+        <!-- Class 11-12 Commerce -->
+        <div class="course-card">
+          <div class="card-header" style="background: linear-gradient(120deg, #1e3a8a, #2c5282);">
+            <i class="fas fa-chart-simple"></i>
+            <h3>11–12 Commerce</h3>
+            <p>Accounts | Economics | Business</p>
+          </div>
+          <div class="card-body">
+            <ul class="subjects-list">
+              <li><i class="fas fa-calculator"></i> Accountancy, Business Studies</li>
+              <li><i class="fas fa-chart-line"></i> Economics (Micro & Macro)</li>
+              <li><i class="fas fa-file-invoice-dollar"></i> Mathematics / Entrepreneurship / IP</li>
+              <li><i class="fas fa-chalkboard"></i> CUET / Company Secretary Foundation</li>
+            </ul>
+            <div class="tag">🎯 Industry-oriented projects & case studies</div>
+          </div>
+        </div>
+
+        <!-- Class 11-12 Arts / Humanities -->
+        <div class="course-card">
+          <div class="card-header" style="background: linear-gradient(120deg, #b45309, #d97706);">
+            <i class="fas fa-palette"></i>
+            <h3>11–12 Arts (Humanities)</h3>
+            <p>History | Pol Science | Sociology</p>
+          </div>
+          <div class="card-body">
+            <ul class="subjects-list">
+              <li><i class="fas fa-landmark"></i> History, Geography, Political Science</li>
+              <li><i class="fas fa-globe"></i> Sociology, Psychology, Economics</li>
+              <li><i class="fas fa-language"></i> English Core & Elective</li>
+              <li><i class="fas fa-pen-fancy"></i> Creative writing, Legal Studies</li>
+            </ul>
+            <div class="tag">🏆 Career guidance for UPSC, Law, Mass Comm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About + Why Choose Us -->
+  <section id="about" style="background: var(--gray-bg);">
+    <div class="container">
+      <h2 class="section-title">🌟 Why Saraswati Education Point?</h2>
+      <p class="section-subtitle">Holistic development, smart classrooms, and result-oriented teaching methodology.</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <i class="fas fa-chalkboard-user"></i>
+          <h4>Experienced Faculty</h4>
+          <p>Subject matter experts with 10+ years of experience in guiding board & competitive exams.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-layer-group"></i>
+          <h4>Dual-Level Modules</h4>
+          <p>Separate focus for school exams + foundation for JEE/NEET/CLAT/CUET.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-laptop"></i>
+          <h4>Digital Smart Classes</h4>
+          <p>Interactive audio-visual learning, recorded lectures for revision.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-chart-line"></i>
+          <h4>Regular Tests & Analysis</h4>
+          <p>Weekly chapter-wise tests, mock exams, and performance tracking dashboard.</p>
+        </div>
+      </div>
+      <div style="margin-top: 3rem; text-align: center;">
+        <p style="font-size: 1.2rem; font-weight: 500;"><i class="fas fa-quote-left" style="color: var(--primary);"></i> Over 85% students improved 2+ grades in final exams <i class="fas fa-quote-right" style="color: var(--primary);"></i></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Enquiry Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">📞 Get in Touch</h2>
+      <p class="section-subtitle">Start your journey with us — limited batch sizes, enroll now for demo class!</p>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3><i class="fas fa-map-marker-alt"></i> Saraswati Education Point</h3>
+          <p>#45, Scholar's Avenue, Near City Center, Patna - 800001</p>
+          <div class="contact-details">
+            <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+            <p><i class="fas fa-envelope"></i> info@saraswatiedupoint.com</p>
+            <p><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM – 8:00 PM</p>
+          </div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="margin-bottom: 1.2rem;">📋 Admission Enquiry</h3>
+          <form id="enquiryForm">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Full Name *" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder="Email Address *" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" id="phone" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+              <select id="courseInterest" style="width:100%; padding:1rem; border-radius:30px; border:1px solid #e2e8f0;">
+                <option value="">Select Course Interest</option>
+                <option>Classes 6-8 (Foundation)</option>
+                <option>Classes 9-10 (Board Excellence)</option>
+                <option>Class 11-12 Science</option>
+                <option>Class 11-12 Commerce</option>
+                <option>Class 11-12 Arts</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea rows="3" placeholder="Your message / Query" id="message"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;">Send Enquiry <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Saraswati Education Point — Empowering Minds for Class 6-10 & 11-12 (All Streams: Science, Commerce, Arts).</p>
+    <p style="margin-top: 0.8rem; font-size: 0.85rem;"><i class="fas fa-heart" style="color: #e67e22;"></i> Quality coaching for board exams & competitive success</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Contact Form Handling (Frontend validation + alert)
+  const form = document.getElementById('enquiryForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const course = document.getElementById('courseInterest').value;
+      
+      if (!name || !email) {
+        alert('⚠️ Please fill in Name and Email fields.');
+        return;
+      }
+      const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+      if (!emailPattern.test(email)) {
+        alert('📧 Please enter a valid email address.');
+        return;
+      }
+      // simple success simulation
+      alert(`✅ Thanks ${name}! Our counsellor will connect soon regarding ${course || 'courses'} at Saraswati Education Point.`);
+      form.reset();
+    });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Active nav highlight on scroll (basic)
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
